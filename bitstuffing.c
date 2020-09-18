@@ -1,36 +1,47 @@
 
 #include <stdio.h>
+#include<conio.h>
+#include<string.h>
 
 int main()
 {
-    int flag[]={0,1,1,1,1,1,1,0};
-    int n;
+    int a[10],t[30],i,j,k,count,n;
+    printf("enter length:");
+    
     scanf("%d",&n);
-    int b[n];
-    for(int i=0;i<n;i++){
-        scanf("%d",&b[i]);
-        
-    }
-     for(int i=0;i<8;i++){
-        printf("%d",flag[i]);
-    }
-    int count = 0;
-    for(int i=0;i<n;i++){
-        if(b[i] ==1){
-            count++;
+    printf("enter values\n");
+
+    for(i=0;i<n;i++)
+    scanf("%d",&a[i]);
+    i=0;
+    count=1;
+    j=0;
+    while(i<n)
+    {
+        if(a[i]==1){
+            t[j]=a[i];
+            for(k=i+1;a[k]==1&&k<n&&count<5;k++){
+                j++;
+                t[j]=a[k];
+                count++;
+                if(count==5) {
+                    j++;
+                    t[j]=0;
+                }
+                i=k;
+                
+            }   
         }
         else{
-            count = 0;
+                t[j]=a[i];
         }
-        printf("%d",b[i]);
-        if(count == 5){
-            printf("0");
-            count = 0;
-        }
-}
-     for(int i=0;i<8;i++){
-         printf("%d",flag[i]);
-         
-     }
-     return 0;
-}
+    i++;
+    j++;
+    }
+    printf("after stuffing:");
+        
+    for(i=0;i<j;i++)
+    printf("%d",t[i]);
+        
+    return 0;
+    }
